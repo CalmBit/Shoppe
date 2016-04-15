@@ -1,0 +1,25 @@
+<% content_for :title do %>
+   New User
+<%end%>
+
+<p style="font-size:48px;">New User</p>
+
+<p>(<span style="color:#F00">*</span> indicates a required field.)</p>
+<br>
+<form action="/user/new" style="margin-left:5em;width:20%;" method="POST">
+      <div class="form-element">
+        <label>Username<span style="color:#F00">*</span>:
+          <input type="text" name="username" style="float:right;"/>
+      	</label>
+      </div>
+      <br>
+      <div class="form-element">
+        <label>Password<span style="color:#F00">*</span>:
+          <input type="password" name="pass" style="float:right;"/>
+        </label>
+      </div>
+      <br>
+      <div class="form-element">
+        <input type="submit" value="Register" style="float:right" />
+      </div>
+</form>

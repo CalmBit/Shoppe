@@ -1,0 +1,26 @@
+<% content_for :title do %>
+  <%= prod['name'] %>
+<%end%> 
+
+<section id="item_card">
+<p> <%= prod['name'] %> </p>
+<p> $<%= prod['offers']['price']%>
+<p>
+<%= prod['aggregateRating']['ratingValue'].to_f %>
+<% for i in 1..5 %>
+  <% if i <= prod['aggregateRating']['ratingValue'].to_f %>
+     <i class="fa fa-star"></i>
+  <% elsif i <= prod['aggregateRating']['ratingValue'].to_f+0.5 %>
+     <i class="fa fa-star-half-o"></i>
+  <% else %>
+     <i class="fa fa-star-o"></i>
+  <% end %>
+<% end %></p>
+<button>Add To Cart</button>
+</section>
+<br>
+<img id="product_img" src="<%= prod['image'] %>" />
+
+<section id="item_description">
+  <p style="font-size:18px;margin-left:4em;margin-right:4em;"><%= prod['description'] %></p>
+</section>

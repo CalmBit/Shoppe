@@ -1,0 +1,19 @@
+{
+    "@context": "http://schema.org",
+    "@type": "Product",
+    "description": "From the everyday to the instant get-together, enjoy the moment with LAY’S Classic potato chips. Deliciously fresh-tasting and crispy, they have been a family favorite snack for nearly 75 years. These big bags are great for sharing some delicious fun at home. • Convenient take-home bag • Three simple ingredients: potatoes, natural oil & salt • Gluten free",
+    "aggregateRating": {
+	"@type": "AggregateRating",
+	"ratingValue": "4.3",
+	"reviewCount": "152"
+    },
+    "name": "Lay's Potato Chips, Classic, 10 Ounce",
+    "image": "../img/da0ae6baefee964aa19507c46e0b721b.jpg",
+    "url": "http://dot.calmbit.com/product/Lays_Potato_Chips__Classic",
+    "offers": {
+	"@type": "Offer",
+	"availability": "http://schema.org/InStock",
+	"price": "9.45",
+	"priceCurrency": "USD"
+    }
+}

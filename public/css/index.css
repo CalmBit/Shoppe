@@ -1,0 +1,148 @@
+body
+{
+    font-family: sans-serif;
+    font-weight: 100;
+    margin:0;
+}
+
+header
+{
+    background-color: #963254;
+    padding:10px 0px 10px 0px;
+    box-shadow: 0px 2px 5px;
+    position: fixed;
+    height:75px;
+    width:100%;
+    left: 0;
+    top: 0;
+    z-index: 100;
+    border-top: 0;
+}
+
+header nav ul li
+{
+    list-style:none;
+    display:inline;
+    margin-right:20px;
+}
+
+a
+{
+    text-decoration: none;
+    color: #E196AF;
+}
+
+li a:visited
+{
+    color: #E196AF;
+}
+
+#brand
+{
+    font-size: 36px;
+}
+
+#product_img
+{
+    margin-left:auto;
+    margin-right:auto;
+    width:400px;
+    height:auto;
+    display:block;
+}
+
+main
+{
+    margin-top:85px;
+}
+
+.product_thumb
+{
+    text-align:center;
+    height:200px;
+    width:200px;
+    background-color: #701332;
+    margin: 20px 10px 20px 10px;
+    transform: scale(1);
+    transition: transform 0.25s;
+}
+
+.product_thumb p
+{
+    color: #E196AF;
+}
+
+.product_thumb:hover
+{
+    transform: scale(1.5);
+    transition: transform 0.25s;
+}
+
+.product_thumb img
+{
+    width:auto;
+    height:100px;
+    margin-top:30px;
+}
+
+#item_card
+{
+    background-color:#711332;
+    display:inline-block;
+    padding: 20px 20px 20px 20px;
+    border-radius:10px;
+    margin-left:1em;
+    position:fixed;
+    width:25%;
+}
+
+#item_card p
+{
+    font-size:36px;
+    text-align:right;
+    margin:right:1em;
+    margin-top:0;
+    margin-bottom:0;
+    color:#E196AF;
+}
+
+#item_card button
+{
+    display:block;
+    color:#E196AF;
+    background-color:#BB5E7D;
+    border:none;
+    font-size:36px;
+    margin-right:auto;
+    margin-left:auto;
+    margin-top:0.5em;
+    padding-left:20px;
+    padding-right:20px;
+    border-radius:10px;
+    transition:0.25s;
+}
+
+#item_card button:hover
+{
+    background-color:#711332;
+    transition:0.25s;
+}
+
+#flash_success
+{
+    width:50%;
+    background-color: #97D490;
+    border: solid 5px #318029;
+    margin-left:auto;
+    margin-right:auto;
+    z-index:10;
+    margin-bottom:1em;
+}
+
+#flash_success p
+{
+    margin-left:2em;
+    margin-right:2em;
+    margin-top:0;
+    margin-bottom:0;
+}

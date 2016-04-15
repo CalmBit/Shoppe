@@ -1,0 +1,11 @@
+<% content_for :title do %>
+   Browse
+<%end%>
+
+<div style="display:flex;">
+<% files.each do |f| %>
+<% @fLoaded = File.read(f) %>
+<% @fHash = JSON.parse(@fLoaded) %>
+<%= erb :_productThumb, :locals => {:prod => @fHash} %>
+<%end%>
+</div>
