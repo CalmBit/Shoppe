@@ -59,8 +59,8 @@ main
 .product_thumb
 {
     text-align:center;
-    height:200px;
-    width:200px;
+    height:250px;
+    width:250px;
     background-color: #701332;
     margin: 20px 10px 20px 10px;
     transform: scale(1);

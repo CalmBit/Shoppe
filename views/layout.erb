@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="/css/index.css" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <script type="text/javascript" src="/javascripts/product.js"></script>
     <title> Shoppe - <%= yield_content :title %> </title>
   </head>
   <body>
@@ -11,12 +12,13 @@
       <nav>
 	<ul>
 	  <li id="brand"><a href="/">Shoppe</a></li>
-	  <% if session[:uid] %>
-	  <li><a href="/user/cart"><i class="fa fa-shopping-cart"></i> Your Cart</a></li>
+	  <% if session[:userHash] %>
+	    <li><a href="/user/cart"><i class="fa fa-shopping-cart"></i> Your Cart</a></li>
 	  <%else%>
-	     <li><a href="/user/login"><i class="fa fa-sign-in"></i> Sign In</a></li>
+	    <li><a href="/user/login"><i class="fa fa-sign-in"></i> Sign In</a></li>
+      <li><a href="/user/register"><i class="fa fa-user-add"></i> Register</a></li>
 	  <%end%>
-	  <li><a href="/browse"><i class="fa fa-search"></i> Browse Products</a></li>
+	    <li><a href="/browse"><i class="fa fa-search"></i> Browse Products</a></li>
 	</ul>
       </nav>
     </header>

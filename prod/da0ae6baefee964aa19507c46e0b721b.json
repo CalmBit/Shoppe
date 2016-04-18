@@ -8,8 +8,9 @@
 	"reviewCount": "152"
     },
     "name": "Lay's Potato Chips, Classic, 10 Ounce",
+    "hash": "da0ae6baefee964aa19507c46e0b721b",
     "image": "../img/da0ae6baefee964aa19507c46e0b721b.jpg",
-    "url": "http://dot.calmbit.com/product/Lays_Potato_Chips__Classic",
+    "url": "/product/Lays_Potato_Chips__Classic",
     "offers": {
 	"@type": "Offer",
 	"availability": "http://schema.org/InStock",

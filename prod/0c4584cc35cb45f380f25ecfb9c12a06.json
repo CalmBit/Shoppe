@@ -8,8 +8,9 @@
 	"reviewCount": "111"
     },
     "name": "Nikon D3200",
+    "hash": "0c4584cc35cb45f380f25ecfb9c12a06",
     "image": "../img/0c4584cc35cb45f380f25ecfb9c12a06.jpg",
-    "url": "http://dot.calmbit.com/product/Nikon_D3200",
+    "url": "/product/Nikon_D3200",
     "offers": {
 	"@type": "Offer",
 	"availability": "http://schema.org/InStock",
