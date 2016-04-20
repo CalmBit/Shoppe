@@ -122,6 +122,28 @@ main
     transition:0.25s;
 }
 
+#generic_button
+{
+    display:block;
+    color:#E196AF;
+    background-color:#BB5E7D;
+    border:none;
+    font-size:36px;
+    margin-right:auto;
+    margin-left:auto;
+    margin-top:0.5em;
+    padding-left:20px;
+    padding-right:20px;
+    border-radius:10px;
+    transition:0.25s;
+}
+
+#generic_button:hover
+{
+    background-color:#711332;
+    transition:0.25s; 
+}
+
 #item_card button:hover
 {
     background-color:#711332;

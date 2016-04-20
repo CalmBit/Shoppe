@@ -32,6 +32,23 @@ get '/user/cart' do
   erb :cart
 end
 
+get '/user/cart.json' do
+  if not session[:userHash]
+    status 401
+    redirect to('/user/login')
+  else
+    session[:userHash]['cart'].to_json
+  end
+end
+
+post '/user/purchase' do
+
+end
+
+delete '/user/cart' do
+  
+end
+
 post '/user/login_attempt' do
   if File.exists?("user/" + params[:username] + ".json") then
     userHash = JSON.parse(File.read("user/" + params[:username] + ".json"))
@@ -40,10 +57,12 @@ post '/user/login_attempt' do
       session[:userHash] = userHash
       redirect to('/')
     else
+      status 401
       flash[:error] = "Username or password was invalid!"
       redirect to('/user/login')
     end
   else
+    status 401
     flash[:error] = "Username or password was invalid!"
     redirect to('/user/login')
   end
@@ -55,6 +74,7 @@ post '/user/new' do
   userJSON = File.new('user/' + params[:username] + '.json', "w+")
   userJSON.write(userHash.to_json)
   userJSON.close
+  status 201
   flash[:success] = "Success! Try logging in."
   redirect to('/')
 end
@@ -67,6 +87,7 @@ get '/product/:id' do
     prodHash = JSON.parse(prodFile)
     erb :product, :locals => {:prod => prodHash}
   else
+    status 404
     erb :product_not_found 
   end
 end
@@ -77,10 +98,12 @@ end
 
 post '/cart/add' do
   if not session[:userHash]
+    status 401
     "{\"response\": \"login_requested\"}"
   else
     itemID = params['itemID']
     if not File.file?('prod/' + itemID + '.json')
+      status 404
       "{\"response:\": \"invalid_product\"}"
     end
     prodFile = File.read('prod/' + itemID + '.json')

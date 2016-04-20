@@ -1,12 +1,3 @@
-// Tell a user, nicely, that something has broken on the site
-
-var httpRequest;
-
-function userError(error)
-{
-    alert("Oops! Tell an admin that `" + error + "`");
-}
-
 function addToCart(itemID)
 {
     httpRequest = new XMLHttpRequest();
@@ -25,16 +16,23 @@ function cartItemAdded()
 {
     if(httpRequest.readyState == XMLHttpRequest.DONE)
     {
+        if(httpRequest.status == 401) window.location = "/user/login";
+        if(httpRequest.status == 404) userError('Product specified not found!');
         if(httpRequest.status == 200)
         {
             var resp = JSON.parse(httpRequest.responseText).response;
-            if(resp == "login_requested")
+            switch(resp)
             {
-                window.location = "/user/login"
-            }
-            else
-            {
-                alert(resp);
+                //fallback
+                case 'login_requested':
+                    window.location = "/user/login";
+                    break;
+                case 'product_invalid':
+                    userError('Product specified not found!');
+                    break;
+                default:
+                    alert(resp);
+                    break;
             }
         }
     }
