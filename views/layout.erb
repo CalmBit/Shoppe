@@ -14,19 +14,24 @@
       <nav>
 	<ul>
 	  <li id="brand"><a href="/">Shoppe</a></li>
+    	<li><a href="/browse"><i class="fa fa-search"></i> Browse Products</a></li>
 	  <% if session[:userHash] %>
 	    <li><a href="/user/cart"><i class="fa fa-shopping-cart"></i> Your Cart</a></li>
+      <li><a href="/user/logout"><i class="fa fa-sign-out"></i> Logout</a></li>
+      <li>
 	  <%else%>
 	    <li><a href="/user/login"><i class="fa fa-sign-in"></i> Sign In</a></li>
-      <li><a href="/user/register"><i class="fa fa-user-add"></i> Register</a></li>
+      <li><a href="/user/register"><i class="fa fa-user-plus"></i> Register</a></li>
 	  <%end%>
-	    <li><a href="/browse"><i class="fa fa-search"></i> Browse Products</a></li>
 	</ul>
       </nav>
     </header>
     <main style="margin-top:100px;">
       <% if flash[:success] %>
-         <div id="flash_success"><p><i class="fa fa-check"></i> <span style="text-align:center;"><%= flash[:success] %></span></p></div>
+         <div id="flash_success"><p><i class="fa fa-check"></i> <%= flash[:success] %></p></div>
+      <%end%>
+      <% if flash[:error] %>
+         <div id="flash_error"><p><i class="fa fa-times"></i> <%= flash[:error] %></p></div>
       <%end%>
       <%= yield %>
     </main>

@@ -163,8 +163,27 @@ main
 
 #flash_success p
 {
-    margin-left:2em;
-    margin-right:2em;
+    text-align: center;
     margin-top:0;
     margin-bottom:0;
+    color:#318029;;
+}
+
+#flash_error
+{
+    width:50%;
+    background-color: #D49097;
+    border: solid 5px #802931;
+    margin-left:auto;
+    margin-right:auto;
+    z-index:10;
+    margin-bottom:1em;
+}
+
+#flash_error p
+{
+    text-align: center;
+    margin-top:0;
+    margin-bottom:0;
+    color:#802931;
 }

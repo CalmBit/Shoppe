@@ -1,0 +1,10 @@
+<% content_for :title do %>
+   Logout
+<%end%>
+
+<p style="font-size:48px;text-align:center;">Super sure you wanna leave?</p>
+<p style="font-size:24px;text-align:center;">If so, just press the button below.</p>
+
+<form action="/user/logout" method="POST">
+    <input type="submit" id="generic_button" value="Logout" />
+</form>

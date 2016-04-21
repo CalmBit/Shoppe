@@ -8,7 +8,6 @@ function queryCartForPurchase()
     }
     httpRequest.onreadystatechange = cartQueried; 
     httpRequest.open("GET", "/user/cart.json")
-    httpRequest.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     httpRequest.send();
 }
 
@@ -27,6 +26,17 @@ function cartQueried()
                     console.log(key + "->" + resp[key].qty);
                 }
             }
+            httpRequest.onreadystatechange = purchaseCompleted;
+            httpRequest.open("DELETE"," /user/cart");
+            httpRequest.send();
         }
+    }
+}
+
+function purchaseCompleted()
+{
+    if(httpRequest.readyState == XMLHttpRequest.DONE)
+    {
+            window.location = '/user/purchasethanks';
     }
 }

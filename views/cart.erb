@@ -4,21 +4,25 @@
 
 <p style="font-size:48px;margin-left:20px;">Your Cart</p>
 <% @total = 0.00 %>
-<% session[:userHash]['cart'].each do |item| %>
-   <% if File.file?("prod/" + item.first + ".json") %>
-    <% @fLoaded = File.read("prod/" + item.first + ".json") %>
-    <% @fHash = JSON.parse(@fLoaded) %>
-    <div style="height:120px;margin-left:50px;margin-right:50px;padding-top:5px;padding-bottom:5px;border: 2px solid grey;margin-top:10px;">
-        <p>
-            <img src="<%=@fHash['image']%>" style="margin-left:10px;width:auto;height:100px;display:inline" />
-            <span style="font-size:24px;margin-left:50px;"><%= @fHash['name'] %></span> 
-            <span style="float:right;margin-right:50px;font-weight:bold;">Price: $<%= item[1]['qty'] * @fHash['offers']['price'].to_f %></span>
-            <span style="float:right;margin-right:50px;">Qty: <%= item[1]['qty'] %></span>
-           <% @total += item[1]['qty'] * @fHash['offers']['price'].to_f %>
-        </p>
-    </div>
-   <% end %>
-<%end%>
-<br>
-<span style="margin-top:25px;margin-left:50px;font-weight:bold;font-size:36px;">Total: $<%= @total.round(2) %></span>
-<button id="generic_button" style="margin-top:25px;margin-left:50px;" onclick="queryCartForPurchase()">Purchase</button>
+<% if session[:userHash]['cart'] %>
+    <% session[:userHash]['cart'].each do |item| %>
+    <% if File.file?("prod/" + item.first + ".json") %>
+        <% @fLoaded = File.read("prod/" + item.first + ".json") %>
+        <% @fHash = JSON.parse(@fLoaded) %>
+        <div style="height:120px;margin-left:50px;margin-right:50px;padding-top:5px;padding-bottom:5px;border: 2px solid grey;margin-top:10px;">
+            <p>
+                <img src="<%=@fHash['image']%>" style="margin-left:10px;width:auto;height:100px;display:inline" />
+                <span style="font-size:24px;margin-left:50px;"><%= @fHash['name'] %></span> 
+                <span style="float:right;margin-right:50px;font-weight:bold;">Price: $<%= item[1]['qty'] * @fHash['offers']['price'].to_f %></span>
+                <span style="float:right;margin-right:50px;">Qty: <%= item[1]['qty'] %></span>
+            <% @total += item[1]['qty'] * @fHash['offers']['price'].to_f %>
+            </p>
+        </div>
+    <% end %>
+    <%end%>
+    <br>
+    <span style="margin-top:25px;margin-left:50px;font-weight:bold;font-size:36px;">Total: $<%= @total.round(2) %></span>
+    <button id="generic_button" style="margin-top:25px;margin-left:50px;" onclick="queryCartForPurchase()">Purchase</button>
+<% else %>
+    <p style="font-size:36px;text-align:center; ">Nothing's here!</h1>
+<% end %>

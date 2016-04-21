@@ -6,20 +6,32 @@
 
 <p>(<span style="color:#F00">*</span> indicates a required field.)</p>
 <br>
-<form action="/user/new" style="margin-left:5em;width:20%;" method="POST">
-      <div class="form-element">
+<form action="/user/new" style="margin-left:5em;width:25%;" method="POST">
+      <div class="form_element">
         <label>Username<span style="color:#F00">*</span>:
           <input type="text" name="username" style="float:right;"/>
       	</label>
       </div>
       <br>
-      <div class="form-element">
+      <div class="form_element">
         <label>Password<span style="color:#F00">*</span>:
           <input type="password" name="pass" style="float:right;"/>
         </label>
       </div>
       <br>
-      <div class="form-element">
-        <input type="submit" value="Register" style="float:right" />
+      <div class="form_element">
+        <label>Confirm Password<span style="color:#F00">*</span>:
+          <input type="password" name="pass_confirm" style="float:right;"/>
+        </label>
+      </div>
+      <br>
+      <div class="form_element">
+        <label>Email<span style="color:#F00">*</span>:
+          <input type="email" name="email" style="float:right;"/>
+        </label>
+      </div>
+      <br>
+      <div class="form_element">
+        <input type="submit" value="Register" id="generic_button" style="float:right" />
       </div>
 </form>

@@ -29,7 +29,12 @@ get '/user/login' do
 end
 
 get '/user/cart' do
-  erb :cart
+ if not session[:userHash]
+    status 401
+    redirect to('/user/login')
+  else
+    erb :cart
+  end
 end
 
 get '/user/cart.json' do
@@ -41,12 +46,21 @@ get '/user/cart.json' do
   end
 end
 
-post '/user/purchase' do
-
+get '/user/purchasethanks' do
+  erb :thanks
 end
 
 delete '/user/cart' do
-  
+  if not session[:userHash]
+    status 401
+    redirect to('/user/login')
+  else
+    session[:userHash].delete('cart')
+    userFile = File.open('user/' + session[:userHash]['username'] + '.json', 'w')
+    userFile.truncate(0)
+    userFile.write(session[:userHash].to_json)
+    userFile.close()
+  end
 end
 
 post '/user/login_attempt' do
@@ -69,14 +83,25 @@ post '/user/login_attempt' do
 end
 
 post '/user/new' do
-  passHash = BCrypt::Password.create(params[:pass])
-  userHash = {:username => params[:username], :passHash => passHash}
-  userJSON = File.new('user/' + params[:username] + '.json', "w+")
-  userJSON.write(userHash.to_json)
-  userJSON.close
-  status 201
-  flash[:success] = "Success! Try logging in."
-  redirect to('/')
+  if params[:username] == "" or params[:pass] == "" or params[:pass_confirm] == ""
+    flash[:error] = "One or more missing entries!"
+    redirect to('/user/register')
+  elsif File.file?('user/' + params[:username] + '.json')
+    flash[:error] = "Username has already been taken!"
+    redirect to('/user/register')
+  elsif params[:pass] != params[:pass_confirm]
+    flash[:error] = "Password and confirmation didn't match!"
+    redirect to('/user/register')
+  else
+    passHash = BCrypt::Password.create(params[:pass])
+    userHash = {:username => params[:username], :passHash => passHash}
+    userJSON = File.new('user/' + params[:username] + '.json', "w+")
+    userJSON.write(userHash.to_json)
+    userJSON.close
+    status 201
+    flash[:success] = "Success! Try logging in."
+    redirect to('/')
+  end
 end
 
 get '/product/:id' do
@@ -94,6 +119,15 @@ end
 
 get '/user/test' do
   session[:userHash]
+end
+
+get '/user/logout' do
+  erb :user_logout
+end
+
+post '/user/logout' do
+  session.delete(:userHash)
+  redirect to('/')
 end
 
 post '/cart/add' do
@@ -123,4 +157,8 @@ post '/cart/add' do
     userFile.close()
     "{\"response\": \"Added " + prod['name'] + " to cart!\"}"
   end
+end
+
+not_found do
+  erb :fourohfour
 end

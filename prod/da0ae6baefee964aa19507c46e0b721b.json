@@ -1,7 +1,7 @@
 {
     "@context": "http://schema.org",
     "@type": "Product",
-    "description": "From the everyday to the instant get-together, enjoy the moment with LAY’S Classic potato chips. Deliciously fresh-tasting and crispy, they have been a family favorite snack for nearly 75 years. These big bags are great for sharing some delicious fun at home. • Convenient take-home bag • Three simple ingredients: potatoes, natural oil & salt • Gluten free",
+    "description": "From the everyday to the instant get-together, enjoy the moment with LAY'S Classic potato chips. Deliciously fresh-tasting and crispy, they have been a family favorite snack for nearly 75 years. These big bags are great for sharing some delicious fun at home. <br> - Convenient take-home bag <br> - Three simple ingredients: potatoes, natural oil & salt <br> - Gluten free",
     "aggregateRating": {
 	"@type": "AggregateRating",
 	"ratingValue": "4.3",
